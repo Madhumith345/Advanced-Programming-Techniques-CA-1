@@ -25,6 +25,7 @@ coding_assigment/
         Que4.py
         books.csv           <- created after running Que4.py
     README.md
+    requirements.txt 
 ```
 
 ---
