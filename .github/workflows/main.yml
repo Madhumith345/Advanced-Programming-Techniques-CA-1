@@ -18,16 +18,20 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '8.0'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: |
+          dotnet restore Que1/ChurrosTests/ChurrosTests.csproj
+          dotnet restore Que2/Que2.csproj
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: |
+          dotnet build Que1/ChurrosTests/ChurrosTests.csproj --configuration Release --no-restore
+          dotnet build Que2/Que2.csproj --configuration Release --no-restore
 
       - name: Run Tests
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test Que1/ChurrosTests/ChurrosTests.csproj --configuration Release --no-build --verbosity normal
 
   python-tests:
     name: Lint & Smoke Test (Python)
